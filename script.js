@@ -18,7 +18,7 @@ function secondsToMinutesAndSeconds(seconds) {
     return `${formattedMinutes}:${formattedSeconds}`;
   }
 async function getsongs(){
-let a = await fetch("spotify/songs/");
+let a = await fetch("/songs/");
 let response = await a.text();
 let div = document.createElement("div");
 div.innerHTML = response;
@@ -33,7 +33,7 @@ for(let i=0;i<as.length;i++){
 return songs;
 }
 const playmusic = (track)=>{
-    currsong.src = ("spotify/songs/" + track);
+    currsong.src = ("/songs/" + track);
     currsong.play();
     currsong.volume = .50;
     masterplay.src = "imgs/pause.svg"

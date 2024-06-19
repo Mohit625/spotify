@@ -60,7 +60,7 @@ const playmusic = (track, pause = false)=>{
     time.innerHTML = "";
 }
 async function main(){
-s =  await getsongs("library/Chillout");
+s =  await getsongs("library/Happy");
     playmusic(s[0], true);
 masterplay.addEventListener("click" ,()=>{
     if(currsong.paused){

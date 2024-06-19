@@ -19,12 +19,8 @@ function secondsToMinutesAndSeconds(seconds) {
     return `${formattedMinutes}:${formattedSeconds}`;
   }
 async function getsongs(folder){
-   try {
-        currfolder = folder;
-        let a = await fetch(`/${folder}/`);
-        if (!a.ok) {
-            throw new Error('Network response was not ok' + a.statusText);
-        }
+currfolder = folder;
+let a = await fetch(`/${folder}/`);
 let response = await a.text();
 let div = document.createElement("div");
 div.innerHTML = response;

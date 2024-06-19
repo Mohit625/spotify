@@ -20,7 +20,7 @@ function secondsToMinutesAndSeconds(seconds) {
   }
 async function getsongs(folder){
 currfolder = folder;
-let a = await fetch(`https://mohit625.github.io/spotify/${folder}/`);
+let a = await fetch(`/${folder}/`);
 let response = await a.text();
 let div = document.createElement("div");
 div.innerHTML = response;
@@ -60,7 +60,7 @@ const playmusic = (track, pause = false)=>{
     time.innerHTML = "";
 }
 async function main(){
-s =  await getsongs("library/Chillout");
+s =  await getsongs("./library/Chillout");
     playmusic(s[0], true);
 masterplay.addEventListener("click" ,()=>{
     if(currsong.paused){

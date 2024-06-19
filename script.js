@@ -64,7 +64,7 @@ const playmusic = (track, pause = false)=>{
     time.innerHTML = "";
 }
 async function main(){
-s =  await getsongs("library/Happy");
+s =  await getsongs("library/Chillout/Bana Sharabi_PagalWorld.com.pe_.mp3");
     playmusic(s[0], true);
 masterplay.addEventListener("click" ,()=>{
     if(currsong.paused){
